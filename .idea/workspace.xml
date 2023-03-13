@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="70624e33-cd41-4277-ba89-e354beb071fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vue-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/.env.production" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/public/vite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/api/authApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/api/httpClient/ResultContainer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/api/httpClient/httpClient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/api/imageApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/api/meetupsApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/fonts/Nunito-cyrillic-ext.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/fonts/Nunito-cyrillic.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/fonts/Nunito-latin-ext.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/fonts/Nunito-latin.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-alert-circle.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-cal-lg.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-cal-sm.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-check-circle.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-check.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-chevron-down.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-clock.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-coffee.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-key.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-list.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-map.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-pen-tool.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-pill-active.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-trash.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-tv.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/icons/icon-user.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/images/undraw_conference_speaker_6nt7.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_agenda-item-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_agenda-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_agenda.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_alert.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_avatar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_badge.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_button-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_calendar-event.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_calendar-view.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_checkbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_common.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_container.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_dropdown.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_fonts.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_form-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_icon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_image-uploader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_input-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_link.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_logo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_meetup-cover.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_meetup-description.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_meetup-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_meetup-info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_meetups-list.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_nav.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_page-auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_page-meetup-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_page-meetup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_page-meetups.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_page_not-found.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_progress.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_radio-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_title.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_toaster.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_transitions.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/_variables.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/styles/taskbook.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/assets/vue.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/HelloWorld.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/LayoutAuth.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/LayoutBase.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/LayoutMeetupForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupAgenda.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupAgendaItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupAgendaItemForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupCover.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupDescription.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupsCalendar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupsFooter.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupsHeader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupsList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupsLogo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/MeetupsNav.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiAlert.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiBadge.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiButton.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiButtonGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiButtonGroupItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiCalendarEvent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiCalendarView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiCheckbox.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiContainer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiDropdown.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiFormGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiIcon.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiImageUploader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiInput.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiInputDate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiLink.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiPageTitle.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiRadioGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiTab.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiTabs.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiTransitionFade.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/components/UiTransitionGroupFade.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/composables/useApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/composables/useMeetupFetch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/composables/useMeetupsFetch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/composables/useMeetupsFilter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/jsdoc.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/plugins/progress/TheTopProgressBar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/plugins/progress/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/plugins/progress/useGsap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/plugins/toaster/TheToaster.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/plugins/toaster/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/router/authGuard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/router/scrollBehaviour.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/services/authService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/services/meetupService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/stores/useAuthStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/utils/dateUtils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageCreateMeetup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageEditMeetup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageLogin.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageMeetup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageMeetupAgenda.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageMeetupDescription.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageMeetups.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageNotFound.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/PageRegister.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/demo/DemoComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/demo/DemoSection.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/demo/PageDemo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/src/views/demo/meetups.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue-app/vite.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Mxn0j1Gw1wh7yAIn47QgPWZgtJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/projects/vue/vue-project/my-vue-app",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\vue\vue-project\my-vue-app" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/my-vue-app/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="70624e33-cd41-4277-ba89-e354beb071fd" name="Changes" comment="" />
+      <created>1678717879496</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678717879496</updated>
+      <workItem from="1678717880712" duration="8000" />
+      <workItem from="1678717924564" duration="3198000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
