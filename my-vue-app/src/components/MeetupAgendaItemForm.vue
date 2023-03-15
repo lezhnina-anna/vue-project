@@ -1,12 +1,194 @@
 <template>
-  <div>Task 07-forms/04-GeneratedForm</div>
+  <fieldset class="agenda-item-form">
+    <button type="button" class="agenda-item-form__remove-button" @click="$emit('remove')">
+      <UiIcon icon="trash" />
+    </button>
+
+    <UiFormGroup>
+      <UiDropdown v-model="localAgendaItem.type" title="Тип" :options="$options.agendaItemTypeOptions" name="type" />
+    </UiFormGroup>
+
+    <div class="agenda-item-form__row">
+      <div class="agenda-item-form__col">
+        <UiFormGroup label="Начало">
+          <UiInput v-model="localAgendaItem.startsAt" type="time" placeholder="00:00" name="startsAt" />
+        </UiFormGroup>
+      </div>
+      <div class="agenda-item-form__col">
+        <UiFormGroup label="Окончание">
+          <UiInput v-model="localAgendaItem.endsAt" type="time" placeholder="00:00" name="endsAt" />
+        </UiFormGroup>
+      </div>
+    </div>
+
+    <ui-form-group
+      v-for="(schema, key) in $options.agendaItemFormSchemas[localAgendaItem.type]"
+      :key="key"
+      :label="schema.label"
+    >
+      <component :is="schema.component" v-bind="schema.props" v-model="localAgendaItem[schema.props.name]" />
+    </ui-form-group>
+  </fieldset>
 </template>
 
 <script>
-// TODO: Task 07-forms/04-GeneratedForm
+import UiIcon from './UiIcon.vue';
+import UiFormGroup from './UiFormGroup.vue';
+import UiInput from './UiInput.vue';
+import UiDropdown from './UiDropdown.vue';
+import moment from 'moment';
+
+const agendaItemTypeIcons = {
+  registration: 'key',
+  opening: 'cal-sm',
+  talk: 'tv',
+  break: 'clock',
+  coffee: 'coffee',
+  closing: 'key',
+  afterparty: 'cal-sm',
+  other: 'cal-sm',
+};
+
+const agendaItemDefaultTitles = {
+  registration: 'Регистрация',
+  opening: 'Открытие',
+  break: 'Перерыв',
+  coffee: 'Coffee Break',
+  closing: 'Закрытие',
+  afterparty: 'Afterparty',
+  talk: 'Доклад',
+  other: 'Другое',
+};
+
+const agendaItemTypeOptions = Object.entries(agendaItemDefaultTitles).map(([type, title]) => ({
+  value: type,
+  text: title,
+  icon: agendaItemTypeIcons[type],
+}));
+
+const talkLanguageOptions = [
+  { value: null, text: 'Не указано' },
+  { value: 'RU', text: 'RU' },
+  { value: 'EN', text: 'EN' },
+];
+
+/**
+ * @typedef FormItemSchema
+ * @property {string} label
+ * @property {string|object} component
+ * @property {object} props
+ */
+/** @typedef {string} AgendaItemField */
+/** @typedef {string} AgendaItemType */
+/** @typedef {Object.<AgendaItemType, FormItemSchema>} FormSchema */
+
+/** @type FormSchema */
+const commonAgendaItemFormSchema = {
+  title: {
+    label: 'Нестандартный текст (необязательно)',
+    component: 'ui-input',
+    props: {
+      name: 'title',
+    },
+  },
+};
+
+/** @type {Object.<AgendaItemField, FormSchema>} */
+const agendaItemFormSchemas = {
+  registration: commonAgendaItemFormSchema,
+  opening: commonAgendaItemFormSchema,
+  talk: {
+    title: {
+      label: 'Тема',
+      component: 'ui-input',
+      props: {
+        name: 'title',
+      },
+    },
+    speaker: {
+      label: 'Докладчик',
+      component: 'ui-input',
+      props: {
+        name: 'speaker',
+      },
+    },
+    description: {
+      label: 'Описание',
+      component: 'ui-input',
+      props: {
+        multiline: true,
+        name: 'description',
+      },
+    },
+    language: {
+      label: 'Язык',
+      component: 'ui-dropdown',
+      props: {
+        options: talkLanguageOptions,
+        title: 'Язык',
+        name: 'language',
+      },
+    },
+  },
+  break: commonAgendaItemFormSchema,
+  coffee: commonAgendaItemFormSchema,
+  closing: commonAgendaItemFormSchema,
+  afterparty: commonAgendaItemFormSchema,
+  other: {
+    title: {
+      label: 'Заголовок',
+      component: 'ui-input',
+      props: {
+        name: 'title',
+      },
+    },
+    description: {
+      label: 'Описание',
+      component: 'ui-input',
+      props: {
+        multiline: true,
+        name: 'description',
+      },
+    },
+  },
+};
 
 export default {
   name: 'MeetupAgendaItemForm',
+
+  components: { UiIcon, UiFormGroup, UiInput, UiDropdown },
+
+  agendaItemTypeOptions,
+  agendaItemFormSchemas,
+
+  props: {
+    agendaItem: {
+      type: Object,
+      required: true,
+    },
+  },
+
+  emits: ['update:agendaItem', 'remove'],
+
+  data() {
+    return {
+      localAgendaItem: { ...this.agendaItem },
+    };
+  },
+
+  watch: {
+    localAgendaItem: {
+      deep: true,
+      handler() {
+        this.$emit('update:agendaItem', { ...this.localAgendaItem });
+      },
+    },
+
+    'localAgendaItem.startsAt'(newValue, prevValue) {
+      const diff = moment(newValue, 'HH:mm').diff(moment(prevValue, 'HH:mm'), 'minutes');
+      this.localAgendaItem.endsAt = moment(this.localAgendaItem.endsAt, 'HH:mm').add(diff, 'minutes').format('HH:mm');
+    },
+  },
 };
 </script>
 

@@ -11,13 +11,11 @@
       <UiButton variant="primary" type="submit" block>Войти</UiButton>
     </template>
 
-    <template #append> Нет аккаунта? <UiLink to="/register" class="link">Зарегистрируйтесь</UiLink> </template>
+    <template #append> Нет аккаунта? <UiLink :to="{ name: 'register' }" class="link">Зарегистрируйтесь</UiLink> </template>
   </UiForm>
 </template>
 
 <script>
-// TODO: Task 05-vue-router/01-AuthPages
-// TODO: Добавить именованные маршруты
 import { ref } from 'vue';
 import UiFormGroup from '../components/UiFormGroup.vue';
 import UiLink from '../components/UiLink.vue';

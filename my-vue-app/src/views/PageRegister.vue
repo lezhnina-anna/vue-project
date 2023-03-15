@@ -22,14 +22,12 @@
 
     <template #append>
       Уже есть аккаунт?
-      <UiLink to="/login">Войдите</UiLink>
+      <UiLink :to="{ name: 'login' }">Войдите</UiLink>
     </template>
   </UiForm>
 </template>
 
 <script>
-// TODO: Task 05-vue-router/01-AuthPages
-// TODO: Добавить именованные маршруты
 import { ref } from 'vue';
 import UiFormGroup from '../components/UiFormGroup.vue';
 import UiInput from '../components/UiInput.vue';

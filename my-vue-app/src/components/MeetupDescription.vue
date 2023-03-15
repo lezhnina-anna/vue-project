@@ -1,5 +1,5 @@
 <template>
-  <div>Task 02-components/01-MeetupDescription</div>
+  <p class="meetup-description">{{ description }}</p>
 </template>
 
 <script>
@@ -7,6 +7,13 @@
 
 export default {
   name: 'MeetupDescription',
+
+  props: {
+    description: {
+      type: String,
+      default: 'Описание должно быть здесь',
+    },
+  },
 };
 </script>
 

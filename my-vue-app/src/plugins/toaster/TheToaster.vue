@@ -1,12 +1,45 @@
 <template>
-  <div>Task 04-vue-router/02-TheToaster</div>
+  <div class="toasts">
+    <toast-item v-for="(toast, index) in toasts" :key="index" :type="toast.type" :text="toast.text" />
+  </div>
 </template>
 
 <script>
-// TODO: Task 04-vue-router/02-TheToaster
+import ToastItem from './Toast.vue';
 
 export default {
   name: 'TheToaster',
+
+  timeout: 5000,
+
+  components: {
+    ToastItem,
+  },
+
+  data() {
+    return {
+      toasts: new Set(),
+      count: 0,
+    };
+  },
+
+  methods: {
+    success: function (text) {
+      this.createToast('success', text);
+    },
+    error: function (text) {
+      this.createToast('error', text);
+    },
+    createToast: function (type, text, timeout = this.$options.timeout) {
+      const toast = { type, text, id: this.count };
+      this.toasts.add(toast);
+      this.count++;
+
+      setTimeout(() => {
+        this.toasts.delete(toast);
+      }, timeout);
+    },
+  },
 };
 </script>
 

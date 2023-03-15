@@ -1,12 +1,14 @@
 <template>
-  <div>Task UiTabs</div>
+  <router-link v-bind="$attrs" class="tabs__tab" exact-active-class="tabs__tab_active">
+    <slot/>
+  </router-link>
 </template>
 
 <script>
-// TODO: Task UiTabs
-
 export default {
   name: 'UiTab',
+
+  inheritAttrs: false,
 };
 </script>
 

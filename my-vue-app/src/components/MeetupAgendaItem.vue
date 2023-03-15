@@ -1,7 +1,7 @@
 <template>
   <div class="agenda-item">
     <div class="agenda-item__col">
-      <img :src=`/assets/icons/icon-${$options.agendaItemIcons[agendaItem.type]}.svg` class="icon" alt="key"/>
+      <UiIcon :icon="$options.agendaItemIcons[agendaItem.type]"/>
     </div>
     <div class="agenda-item__col">{{ agendaItem.startsAt }} - {{ agendaItem.endsAt }}</div>
     <div class="agenda-item__col">
@@ -17,10 +17,15 @@
 </template>
 
 <script>
-import { agendaItemIcons, agendaItemDefaultTitles } from '../services/meetupService.js';
+import UiIcon from './UiIcon.vue';
+import {agendaItemIcons, agendaItemDefaultTitles} from '../services/meetupService.js';
 
 export default {
   name: 'MeetupAgendaItem',
+
+  components: {
+    UiIcon,
+  },
 
   agendaItemDefaultTitles,
 
@@ -34,3 +39,51 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+/* _agenda-item.css */
+.agenda-item {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  line-height: 28px;
+}
+.agenda-item__col:nth-child(1) {
+  flex: 1 0 48px;
+  max-width: 48px;
+}
+.agenda-item__col:nth-child(2) {
+  flex: 115px;
+  max-width: 115px;
+  color: var(--blue);
+  white-space: nowrap;
+}
+.agenda-item__col:nth-child(3) {
+  flex: 1 0 calc(100% - 48 - 115);
+  max-width: calc(100% - 48 - 115);
+  padding-left: 24px;
+}
+.agenda-item__title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+.agenda-item__lang {
+  font-style: italic;
+}
+.agenda-item__dot::before {
+  content: '•';
+  color: var(--grey);
+  padding: 0 1ch;
+}
+.agenda-item__talk {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+@media all and (min-width: 992px) {
+  .agenda-item {
+    padding: 40px 0;
+  }
+}
+</style>

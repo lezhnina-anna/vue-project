@@ -1,12 +1,84 @@
 <template>
-  <div>Task 04-vue-cli/04-UiDropdown1</div>
+  <div :class="{ dropdown: true, dropdown_opened: opened }" @click="toggleOpened">
+    <button type="button" :class="{ dropdown__toggle: true, dropdown__toggle_icon: useIcon }">
+      <ui-icon v-if="selectedOption && selectedOption.icon" :icon="selectedOption.icon" class="dropdown__icon" />
+      <span>{{ selectedOption && selectedOption.text ? selectedOption.text : title }}</span>
+    </button>
+
+    <div v-show="opened" class="dropdown__menu" role="listbox">
+      <button
+        v-for="option in options"
+        :key="option.value"
+        :class="{ dropdown__item: true, dropdown__item_icon: useIcon }"
+        :value="option.value"
+        role="option"
+        type="button"
+        @click="handleSelect"
+      >
+        <ui-icon v-if="option.icon" :icon="option.icon" class="dropdown__icon" />
+        {{ option.text }}
+      </button>
+    </div>
+  </div>
+
+  <select @change="handleSelect">
+    <option
+      v-for="option in options"
+      :key="option.value"
+      :value="option.value"
+      :selected="selectedOption && selectedOption.value === option.value"
+    >
+      {{ option.text }}
+    </option>
+  </select>
 </template>
 
 <script>
-// TODO: Task 04-vue-cli/04-UiDropdown1
+import UiIcon from './UiIcon.vue';
 
 export default {
   name: 'UiDropdown',
+
+  components: { UiIcon },
+
+  props: {
+    options: {
+      type: Array,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    modelValue: {
+      type: String,
+    },
+  },
+
+  emits: ['update:modelValue'],
+
+  data() {
+    return {
+      opened: false,
+    };
+  },
+
+  computed: {
+    useIcon: function () {
+      return this.options.some((item) => item.icon && item.icon.length);
+    },
+    selectedOption: function () {
+      return this.options.find((item) => item.value === this.modelValue);
+    },
+  },
+
+  methods: {
+    toggleOpened: function () {
+      this.opened = !this.opened;
+    },
+    handleSelect: function (e) {
+      this.$emit('update:modelValue', e.target.value);
+    },
+  },
 };
 </script>
 
