@@ -3,30 +3,46 @@
     <RouterLink v-if="$route.meta.showReturnToMeetups" to="/meetups" class="nav__link">
       &larr; Вернуться к списку
     </RouterLink>
-    <!-- Ссылки гостя -->
-    <RouterLink to="/login" class="nav__link">Вход</RouterLink>
-    <RouterLink to="/register" class="nav__link">Регистрация</RouterLink>
-    <!-- Ссылки авторизованного пользователя -->
-    <RouterLink to="/meetups?participation=attending" class="nav__link"> Мои митапы </RouterLink>
-    <RouterLink to="/meetups?participation=organizing" class="nav__link"> Организуемые митапы </RouterLink>
-    <RouterLink to="/meetups/create" class="nav__link">Создать митап</RouterLink>
-    <a href="#" class="nav__link">fullname (выйти)</a>
+    <template v-if="!isAuthenticated">
+      <!-- Ссылки гостя -->
+      <RouterLink :to="{ name: 'login' }" class="nav__link">Вход</RouterLink>
+      <RouterLink :to="{ name: 'register' }" class="nav__link">Регистрация</RouterLink>
+    </template>
+    <template v-else>
+      <!-- Ссылки авторизованного пользователя -->
+      <RouterLink :to="{ name: 'meetups', query: { participation: 'attending' } }" class="nav__link">
+        Мои митапы</RouterLink
+      >
+      <RouterLink :to="{ name: 'meetups', query: { participation: 'organizing' } }" class="nav__link">
+        Организуемые митапы</RouterLink
+      >
+      <RouterLink :to="{ name: 'meetupCreate' }" class="nav__link">Создать митап</RouterLink>
+      <a href="#" class="nav__link" @click="logout">{{ user.fullname }} (выйти)</a>
+    </template>
+
     <!-- Ссылка - не часть проекта -->
     <RouterLink to="/demo" class="nav__link">🎨 Components Demo</RouterLink>
   </nav>
 </template>
 
 <script>
-// TODO: Task 05-vue-router/01-AuthPages
-/*
-  TODO: Добавить работу с аутентификацией в навигации:
-        - Разные ссылки у гостя и авторизованного пользователя
-        - Кнопка выхода
-  TODO: Добавить именованные маршруты
-*/
+import { useAuthStore } from '../stores/useAuthStore';
+import { storeToRefs } from 'pinia';
 
 export default {
   name: 'MeetupsNav',
+
+  setup() {
+    const authStore = useAuthStore();
+    const { logout } = authStore;
+    const { user, isAuthenticated } = storeToRefs(authStore);
+
+    return {
+      isAuthenticated,
+      user,
+      logout,
+    };
+  },
 };
 </script>
 

@@ -58,6 +58,7 @@ export const routes = [
   },
   {
     path: '/meetups/create',
+    name: 'meetupCreate',
     // TODO: Добавить страницу создания митапа
   },
   {
