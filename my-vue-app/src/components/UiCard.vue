@@ -34,12 +34,17 @@ export default {
       required: false,
     },
   },
+
+  computed: {
+    coverImage() {
+      return this.cover ? `url('${this.cover}')` : `var(--default-cover)`;
+    },
+  },
 };
 </script>
 
 <style scoped>
 /* _card.css */
-/* TODO: Добавить v-bind в стили */
 .card {
   display: flex;
   flex-direction: row;
@@ -60,10 +65,9 @@ export default {
 }
 
 .card__cover {
-  --bg-url: var(--default-cover);
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--bg-url);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), v-bind(coverImage);
   font-family: Roboto, sans-serif;
   font-weight: 700;
   font-size: 36px; /* 40px */

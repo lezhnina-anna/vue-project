@@ -1,6 +1,6 @@
 <template>
-  <router-link v-bind="$attrs" class="tabs__tab" exact-active-class="tabs__tab_active">
-    <slot/>
+  <router-link :to="to" class="tabs__tab" exact-active-class="tabs__tab_active">
+    <slot />
   </router-link>
 </template>
 
@@ -9,6 +9,8 @@ export default {
   name: 'UiTab',
 
   inheritAttrs: false,
+
+  props: ['to'],
 };
 </script>
 

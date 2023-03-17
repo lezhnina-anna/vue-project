@@ -1,18 +1,22 @@
 <template>
-  <UiForm>
-    <UiFormGroup label="Email">
-      <UiInput v-model="email" name="email" type="email" placeholder="demo@email" required />
-    </UiFormGroup>
-    <UiFormGroup label="Пароль">
-      <UiInput v-model="password" name="password" type="password" placeholder="password" required />
-    </UiFormGroup>
+  <LayoutAuth>
+    <UiForm>
+      <UiFormGroup label="Email">
+        <UiInput v-model="email" name="email" type="email" placeholder="demo@email" required />
+      </UiFormGroup>
+      <UiFormGroup label="Пароль">
+        <UiInput v-model="password" name="password" type="password" placeholder="password" required />
+      </UiFormGroup>
 
-    <template #buttons>
-      <UiButton variant="primary" type="submit" block>Войти</UiButton>
-    </template>
+      <template #buttons>
+        <UiButton variant="primary" type="submit" block>Войти</UiButton>
+      </template>
 
-    <template #append> Нет аккаунта? <UiLink :to="{ name: 'register' }" class="link">Зарегистрируйтесь</UiLink> </template>
-  </UiForm>
+      <template #append>
+        Нет аккаунта? <UiLink :to="{ name: 'register' }" class="link">Зарегистрируйтесь</UiLink>
+      </template>
+    </UiForm>
+  </LayoutAuth>
 </template>
 
 <script>
@@ -22,6 +26,7 @@ import UiLink from '../components/UiLink.vue';
 import UiInput from '../components/UiInput.vue';
 import UiButton from '../components/UiButton.vue';
 import UiForm from '../components/UiForm.vue';
+import LayoutAuth from '../components/LayoutAuth.vue';
 
 export default {
   name: 'PageLogin',
@@ -32,11 +37,11 @@ export default {
     UiInput,
     UiLink,
     UiFormGroup,
+    LayoutAuth,
   },
 
   setup() {
     // TODO: <title> "Вход | Meetups"
-    // TODO: Добавить LayoutAuth
 
     /*
       TODO: Добавить обработчик сабмита

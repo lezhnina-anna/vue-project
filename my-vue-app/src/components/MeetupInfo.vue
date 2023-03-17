@@ -1,26 +1,23 @@
 <template>
   <ul class="meetup-info">
     <li>
-      <UiIcon icon="search" class="meetup-info__icon"/>
+      <UiIcon icon="search" class="meetup-info__icon" />
       {{ organizer }}
     </li>
     <li>
-      <UiIcon icon="map" class="meetup-info__icon"/>
+      <UiIcon icon="map" class="meetup-info__icon" />
       {{ place }}
     </li>
     <li>
-      <UiIcon icon="cal-lg" class="meetup-info__icon"/>
+      <UiIcon icon="cal-lg" class="meetup-info__icon" />
       <time :datetime="isoDate">{{ localDate }}</time>
     </li>
   </ul>
 </template>
 
 <script>
-// TODO: Task 02-components/03-MeetupInfo
-// TODO: Add <UiIcon>
-// TODO: Add date utils
-
 import UiIcon from '../components/UiIcon.vue';
+import { formatAsIsoDate, formatAsLocalDate } from '../utils/dateUtils';
 
 export default {
   name: 'MeetupInfo',
@@ -48,15 +45,11 @@ export default {
 
   computed: {
     isoDate() {
-      return new Date(this.date).toISOString().split('T')[0];
+      return formatAsIsoDate(this.date);
     },
 
     localDate() {
-      return new Date(this.date).toLocaleString(navigator.language, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
+      return formatAsLocalDate(this.date);
     },
   },
 };

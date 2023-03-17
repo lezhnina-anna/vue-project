@@ -1,12 +1,99 @@
 <template>
-  <div>Task 10-slots/03-UiCalendarView</div>
+  <div class="calendar-view">
+    <div class="calendar-view__controls">
+      <div class="calendar-view__controls-inner">
+        <button
+          class="calendar-view__control-left"
+          type="button"
+          aria-label="Previous month"
+          @click="updateDate(-1)"
+        ></button>
+        <div class="calendar-view__date">{{ localDate }}</div>
+        <button
+          class="calendar-view__control-right"
+          type="button"
+          aria-label="Next month"
+          @click="updateDate(1)"
+        ></button>
+      </div>
+    </div>
+
+    <div class="calendar-view__grid">
+      <div
+        v-for="cell in dateCells"
+        :key="cell.getTime()"
+        :class="{
+          'calendar-view__cell': true,
+          'calendar-view__cell_inactive': cell.getMonth() !== currentDate.getMonth(),
+        }"
+        tabindex="0"
+      >
+        <div class="calendar-view__cell-day">{{ cell.getDate() }}</div>
+        <div class="calendar-view__cell-content">
+          <slot name="cell" :date="cell"></slot>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-// TODO: Task 10-slots/03-UiCalendarView
-
 export default {
   name: 'UiCalendarView',
+
+  data() {
+    return {
+      currentDate: new Date(),
+    };
+  },
+  computed: {
+    localDate: function () {
+      return this.currentDate.toLocaleDateString(navigator.language, {
+        month: 'long',
+        year: 'numeric',
+      });
+    },
+    dateCells: function () {
+      const date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+      const result = this.getInactiveCells(-1, date);
+
+      while (date.getMonth() === this.currentDate.getMonth()) {
+        result.push(new Date(date));
+        date.setDate(date.getDate() + 1);
+      }
+
+      window.dates = [...result, ...this.getInactiveCells(1, result[result.length - 1])];
+      return [...result, ...this.getInactiveCells(1, result[result.length - 1])];
+    },
+  },
+
+  methods: {
+    getInactiveCells: function (dir, dateFrom) {
+      const result = [];
+
+      if (![1, -1].includes(dir)) return result;
+
+      const sundayIndex = 7;
+      let date = new Date(dateFrom);
+      let currentWeekday = date.getDay() === 0 ? sundayIndex : date.getDay(); //восресенье
+
+      const daysToAdd = dir === 1 ? sundayIndex - currentWeekday : currentWeekday - 1;
+
+      for (let i = 0; i < daysToAdd; i++) {
+        date.setDate(date.getDate() + dir);
+        result.push(new Date(date));
+      }
+
+      return dir === 1 ? result : result.reverse();
+    },
+    updateDate: function (dir) {
+      if (![1, -1].includes(dir)) return;
+
+      this.currentDate.setDate(1);
+      this.currentDate.setMonth(this.currentDate.getMonth() + dir);
+      this.currentDate = new Date(this.currentDate);
+    },
+  },
 };
 </script>
 
