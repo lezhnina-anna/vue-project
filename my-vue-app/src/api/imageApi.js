@@ -6,5 +6,11 @@ import { httpClient } from './httpClient/httpClient.js';
  * @returns {Promise<ResultContainer<ImageDto>>}
  */
 export function postImage(file) {
-  // TODO: реализовать функцию
+  const formData = new FormData();
+  formData.append('file', file);
+  return httpClient.post('/images/upload', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 }
