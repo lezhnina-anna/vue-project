@@ -1,10 +1,10 @@
 <template>
   <div class="tabs">
     <div class="tabs__nav" role="tablist">
-      <slot name="tabs"/>
+      <slot name="tabs" />
     </div>
     <div class="tabs__content">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>

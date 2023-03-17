@@ -3,8 +3,6 @@
 </template>
 
 <script>
-// TODO: Task 02-components/01-MeetupDescription
-
 export default {
   name: 'MeetupDescription',
 

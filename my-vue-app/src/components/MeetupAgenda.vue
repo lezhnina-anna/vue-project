@@ -1,7 +1,7 @@
 <template>
   <ul class="agenda">
     <li class="agenda__item">
-      <MeetupAgendaItem v-for="agendaItem in agenda" :agenda-item="agendaItem"/>
+      <MeetupAgendaItem v-for="agendaItem in agenda" :agenda-item="agendaItem" />
     </li>
   </ul>
 </template>
@@ -22,8 +22,7 @@ export default {
       required: true,
     },
   },
-
-}
+};
 </script>
 
 <style scoped>

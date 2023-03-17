@@ -1,7 +1,7 @@
 <template>
   <div class="agenda-item">
     <div class="agenda-item__col">
-      <UiIcon :icon="$options.agendaItemIcons[agendaItem.type]"/>
+      <UiIcon :icon="$options.agendaItemIcons[agendaItem.type]" />
     </div>
     <div class="agenda-item__col">{{ agendaItem.startsAt }} - {{ agendaItem.endsAt }}</div>
     <div class="agenda-item__col">
@@ -18,7 +18,7 @@
 
 <script>
 import UiIcon from './UiIcon.vue';
-import {agendaItemIcons, agendaItemDefaultTitles} from '../services/meetupService.js';
+import { agendaItemIcons, agendaItemDefaultTitles } from '../services/meetupService.js';
 
 export default {
   name: 'MeetupAgendaItem',
@@ -37,7 +37,7 @@ export default {
       required: true,
     },
   },
-}
+};
 </script>
 
 <style scoped>
