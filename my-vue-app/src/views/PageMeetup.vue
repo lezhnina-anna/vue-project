@@ -1,6 +1,6 @@
 <template>
   <div class="page-meetup">
-    <MeetupView v-if="meetup" :meetup="meetup">
+    <MeetupView v-if="meetup" :meetup="meetup" @update="fetchMeetup">
       <UiTabs>
         <template #tabs>
           <UiTab :to="{ name: 'meetup.description' }">Описание</UiTab>
@@ -85,6 +85,7 @@ export default {
       meetup,
       error,
       setMeetup,
+      fetchMeetup,
     };
   },
 };

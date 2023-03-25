@@ -3,12 +3,7 @@
     <RouterLink v-if="$route.meta.showReturnToMeetups" to="/meetups" class="nav__link">
       &larr; Вернуться к списку
     </RouterLink>
-    <template v-if="!isAuthenticated">
-      <!-- Ссылки гостя -->
-      <RouterLink :to="{ name: 'login' }" class="nav__link">Вход</RouterLink>
-      <RouterLink :to="{ name: 'register' }" class="nav__link">Регистрация</RouterLink>
-    </template>
-    <template v-else>
+    <template v-if="isAuthenticated">
       <!-- Ссылки авторизованного пользователя -->
       <RouterLink :to="{ name: 'meetups', query: { participation: 'attending' } }" class="nav__link">
         Мои митапы</RouterLink
@@ -16,8 +11,13 @@
       <RouterLink :to="{ name: 'meetups', query: { participation: 'organizing' } }" class="nav__link">
         Организуемые митапы</RouterLink
       >
-      <RouterLink :to="{ name: 'meetupCreate' }" class="nav__link">Создать митап</RouterLink>
+      <RouterLink :to="{ name: 'createMeetup' }" class="nav__link">Создать митап</RouterLink>
       <a href="#" class="nav__link" @click="logout">{{ user.fullname }} (выйти)</a>
+    </template>
+    <template v-else>
+      <!-- Ссылки гостя -->
+      <RouterLink :to="{ name: 'login' }" class="nav__link">Вход</RouterLink>
+      <RouterLink :to="{ name: 'register' }" class="nav__link">Регистрация</RouterLink>
     </template>
 
     <!-- Ссылка - не часть проекта -->

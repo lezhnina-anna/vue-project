@@ -9,14 +9,25 @@
         </div>
         <div class="meetup__aside">
           <MeetupInfo :organizer="meetup.organizer" :place="meetup.place" :date="meetup.date" />
-          <!-- TODO: Добавить проверку на аутентификацию и является ли пользователь организатором митапа -->
           <!-- TODO: Реализовать кнопки (некоторые должны быть ссылками) -->
           <div class="meetup__aside-buttons">
             <!-- TODO: Может добавить тут слот? -->
-            <UiButton variant="primary" class="meetup__aside-button">Редактировать</UiButton>
-            <UiButton variant="danger" class="meetup__aside-button">Удалить</UiButton>
-            <UiButton variant="secondary" class="meetup__aside-button">Отменить участие</UiButton>
-            <UiButton variant="primary" class="meetup__aside-button"> Участвовать </UiButton>
+            <template v-if="canEdit">
+              <UiButton variant="primary" class="meetup__aside-button">Редактировать</UiButton>
+              <UiButton variant="danger" class="meetup__aside-button" @click="handleDeleteMeetupButtonClick"
+                >Удалить</UiButton
+              >
+            </template>
+            <UiButton
+              v-if="meetup.attending"
+              variant="secondary"
+              class="meetup__aside-button"
+              @click="handleLeaveMeetupButtonClick"
+              >Отменить участие</UiButton
+            >
+            <UiButton v-else variant="primary" class="meetup__aside-button" @click="handleAttendMeetupButtonClick">
+              Участвовать
+            </UiButton>
           </div>
         </div>
       </div>
@@ -29,6 +40,12 @@ import MeetupCover from './MeetupCover.vue';
 import MeetupInfo from './MeetupInfo.vue';
 import UiContainer from './UiContainer.vue';
 import UiButton from './UiButton.vue';
+import { useAuthStore } from '../stores/useAuthStore';
+import { storeToRefs } from 'pinia/dist/pinia';
+import { attendMeetup, leaveMeetup, deleteMeetup } from '../api/meetupsApi';
+import { computed } from 'vue';
+import { useToaster } from '../plugins/toaster';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'MeetupView',
@@ -47,15 +64,54 @@ export default {
     },
   },
 
-  setup() {
-    // TODO: Добавить обработку кнопок, включая работу с API
-    /*
-      TODO: Добавить тосты при успешных операциях
-            - Митап удалён
-            - Сохранено
-            - Текст ошибки в случае ошибки на API
-     */
+  emits: ['update'],
+
+  setup(props, { emit }) {
+    const authStore = useAuthStore();
+    const { user, isAuthenticated } = storeToRefs(authStore);
+    const toaster = useToaster();
+    const router = useRouter();
+
+    const canEdit = computed(() => isAuthenticated && props.meetup.organizer === user.fullname);
+
+    const updateParticipant = async (handler) => {
+      const response = await handler(props.meetup.id);
+
+      if (response.success) {
+        toaster.success('Сохранено');
+        emit('update');
+      } else {
+        toaster.error(response.error.message);
+      }
+    };
+
+    const handleAttendMeetupButtonClick = () => {
+      updateParticipant(attendMeetup);
+    };
+
+    const handleLeaveMeetupButtonClick = () => {
+      updateParticipant(leaveMeetup);
+    };
+
+    const handleDeleteMeetupButtonClick = async () => {
+      const response = await deleteMeetup(props.meetup.id);
+
+      if (response.success) {
+        router.push({ name: 'meetups' });
+        toaster.success('Митап удалён');
+      } else {
+        toaster.error(response.error.message);
+      }
+    };
+
     // TODO: Будет плюсом блокировать кнопку на время загрузки
+
+    return {
+      canEdit,
+      handleAttendMeetupButtonClick,
+      handleLeaveMeetupButtonClick,
+      handleDeleteMeetupButtonClick,
+    };
   },
 };
 </script>
