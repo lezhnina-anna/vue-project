@@ -17,6 +17,9 @@
 import LayoutBase from './components/LayoutBase.vue';
 import UiAlert from './components/UiAlert.vue';
 import { httpClient } from './api/httpClient/httpClient.js';
+import { clearUser } from './services/authService.js';
+import { useAuthStore } from './stores/useAuthStore';
+import { storeToRefs } from 'pinia/dist/pinia';
 
 export default {
   name: 'App',
@@ -29,11 +32,15 @@ export default {
   setup() {
     // TODO: Установить <title> - "Meetups"
 
-    // TODO: для авторизованных пользователей - запросить новые данные пользователя для актуализации и проверки актуальности
+    const authStore = useAuthStore();
+    const { update } = authStore;
+    const { isAuthenticated } = storeToRefs(authStore);
 
-    httpClient.onUnauthenticated(() => {
-      // TODO: сессия пользователя больше не валидна - нужна обработка потери авторизации
-    });
+    if (isAuthenticated.value) {
+      update();
+    }
+
+    httpClient.onUnauthenticated(clearUser);
 
     httpClient.onNetworkError(() => {
       // TODO: проблема с сетью, стоит вывести тост пользователю

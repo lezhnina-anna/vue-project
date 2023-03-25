@@ -49,20 +49,32 @@ export const routes = [
   {
     path: '/login',
     name: 'login',
+    meta: {
+      unauthorizedOnly: true,
+    },
     component: () => import('../views/PageLogin.vue'),
   },
   {
     path: '/register',
     name: 'register',
+    meta: {
+      unauthorizedOnly: true,
+    },
     component: () => import('../views/PageRegister.vue'),
   },
   {
     path: '/meetups/create',
-    name: 'meetupCreate',
-    // TODO: Добавить страницу создания митапа
+    name: 'createMeetup',
+    meta: {
+      authorizedOnly: true,
+    },
+    component: () => import('../views/PageCreateMeetup.vue'),
   },
   {
     path: '/meetups/:meetupId(\\d+)/edit',
+    meta: {
+      authorizedOnly: true,
+    },
     // TODO: Добавить страницу редактирования митапа
   },
   {
