@@ -1,2 +1,11 @@
-// TODO: реализовать функции, необходимые для авторизации, помимо работы с API
-// Например, сохранения данных пользователя в LS, восстановления и удаления
+export function saveUser(user) {
+  localStorage.setItem('user', JSON.stringify(user));
+}
+
+export function clearUser() {
+  localStorage.removeItem('user');
+}
+
+export function getUser() {
+  return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+}
