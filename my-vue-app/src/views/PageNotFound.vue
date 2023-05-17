@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { useHead } from 'unhead'
 import UiContainer from '../components/UiContainer.vue';
 
 export default {
@@ -20,7 +21,9 @@ export default {
   },
 
   setup() {
-    // TODO: <title> "Страница не найдена | Meetups"
+    useHead({
+      title: 'Страница не найдена | Meetups'
+    })
   },
 };
 </script>

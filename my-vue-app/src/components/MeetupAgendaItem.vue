@@ -6,7 +6,7 @@
     <div class="agenda-item__col">{{ agendaItem.startsAt }} - {{ agendaItem.endsAt }}</div>
     <div class="agenda-item__col">
       <h3 class="agenda-item__title">{{ agendaItem.title ?? $options.agendaItemDefaultTitles[agendaItem.type] }}</h3>
-      <p class="agenda-item__talk" v-if="agendaItem.type === 'talk'">
+      <p v-if="agendaItem.type === 'talk'" class="agenda-item__talk">
         <span>{{ agendaItem.speaker }}</span>
         <span class="agenda-item__dot"></span>
         <span class="agenda-item__lang">{{ agendaItem.language }}</span>

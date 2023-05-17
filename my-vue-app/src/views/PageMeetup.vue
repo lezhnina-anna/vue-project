@@ -30,6 +30,7 @@ import UiAlert from '../components/UiAlert.vue';
 import UiTabs from '../components/UiTabs.vue';
 import UiTab from '../components/UiTab.vue';
 import { getMeetup } from '../api/meetupsApi.js';
+import { useHead } from 'unhead';
 
 export default {
   name: 'PageMeetup',
@@ -61,7 +62,6 @@ export default {
   },
 
   setup(props) {
-    // TODO: Установить <title> - "<название митапа> | Meetups"
     const meetup = ref(null);
     const error = ref(null);
 
@@ -71,7 +71,7 @@ export default {
 
       const result = await getMeetup(props.meetupId);
       if (result.success) {
-        meetup.value = result.data;
+        setMeetup(result.data);
       } else {
         error.value = result.error.message;
       }
@@ -79,7 +79,13 @@ export default {
 
     watch(() => props.meetupId, fetchMeetup);
 
-    const setMeetup = (value) => (meetup.value = value);
+    const setMeetup = (value) => {
+      useHead({
+        title: `${value.title} | Meetups`
+      })
+
+      meetup.value = value
+    };
 
     return {
       meetup,

@@ -1,7 +1,7 @@
 <template>
   <ul class="agenda">
     <li class="agenda__item">
-      <MeetupAgendaItem v-for="agendaItem in agenda" :agenda-item="agendaItem" :key="agendaItem.id" />
+      <MeetupAgendaItem v-for="agendaItem in agenda" :key="agendaItem.id" :agenda-item="agendaItem" />
     </li>
   </ul>
 </template>

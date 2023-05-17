@@ -41,6 +41,7 @@ import LayoutAuth from '../components/LayoutAuth.vue';
 import { useToaster } from '../plugins/toaster';
 import { registerUser } from '../api/authApi';
 import { useRouter } from 'vue-router';
+import { useHead } from 'unhead';
 
 export default {
   name: 'PageRegister',
@@ -56,7 +57,9 @@ export default {
   },
 
   setup() {
-    // TODO: <title> "Регистрация | Meetups"
+    useHead({
+      title: 'Регистрация | Meetups'
+    })
 
     const toaster = useToaster();
     const router = useRouter();

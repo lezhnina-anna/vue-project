@@ -20,6 +20,7 @@ import { httpClient } from './api/httpClient/httpClient.js';
 import { clearUser } from './services/authService.js';
 import { useAuthStore } from './stores/useAuthStore';
 import { storeToRefs } from 'pinia/dist/pinia';
+import { useHead } from 'unhead'
 
 export default {
   name: 'App',
@@ -30,7 +31,9 @@ export default {
   },
 
   setup() {
-    // TODO: Установить <title> - "Meetups"
+    useHead({
+      title: 'Meetups'
+    })
 
     const authStore = useAuthStore();
     const { update } = authStore;

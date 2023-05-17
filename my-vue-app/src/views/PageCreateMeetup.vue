@@ -13,6 +13,7 @@ import { useRouter } from 'vue-router/dist/vue-router';
 import { postMeetup } from '../api/meetupsApi';
 import { useToaster } from '../plugins/toaster';
 import { postImage } from '../api/imageApi';
+import { useHead } from 'unhead';
 
 export default {
   name: 'PageCreateMeetup',
@@ -23,7 +24,9 @@ export default {
   },
 
   setup() {
-    // TODO: title "Создание митапа | Meetups"
+    useHead({
+      title: 'Создание митапа | Meetups'
+    })
     const meetup = ref(createMeetup());
     const router = useRouter();
     const toaster = useToaster();

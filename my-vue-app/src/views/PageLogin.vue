@@ -2,10 +2,10 @@
   <LayoutAuth>
     <UiForm @submit="handleSubmit">
       <UiFormGroup label="Email">
-        <UiInput v-model="email" name="email" type="email" placeholder="demo@email" required />
+        <UiInput v-model="email" name="email" type="email" placeholder="demo@email" required/>
       </UiFormGroup>
       <UiFormGroup label="Пароль">
-        <UiInput v-model="password" name="password" type="password" placeholder="password" required />
+        <UiInput v-model="password" name="password" type="password" placeholder="password" required/>
       </UiFormGroup>
 
       <template #buttons>
@@ -21,16 +21,17 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import {ref} from 'vue';
 import UiFormGroup from '../components/UiFormGroup.vue';
 import UiLink from '../components/UiLink.vue';
 import UiInput from '../components/UiInput.vue';
 import UiButton from '../components/UiButton.vue';
 import UiForm from '../components/UiForm.vue';
 import LayoutAuth from '../components/LayoutAuth.vue';
-import { useToaster } from '../plugins/toaster';
-import { useRouter, useRoute } from 'vue-router/dist/vue-router';
-import { useAuthStore } from '../stores/useAuthStore';
+import {useToaster} from '../plugins/toaster';
+import {useRouter, useRoute} from 'vue-router/dist/vue-router';
+import {useAuthStore} from '../stores/useAuthStore';
+import {useHead} from 'unhead';
 
 export default {
   name: 'PageLogin',
@@ -45,7 +46,9 @@ export default {
   },
 
   setup() {
-    // TODO: <title> "Вход | Meetups"
+    useHead({
+      title: 'Вход | Meetups'
+    });
 
     const email = ref('');
     const password = ref('');
@@ -53,7 +56,7 @@ export default {
     const toaster = useToaster();
     const router = useRouter();
     const route = useRoute();
-    const { login } = useAuthStore();
+    const {login} = useAuthStore();
 
     const handleSubmit = async () => {
       const result = await login(email.value, password.value);
