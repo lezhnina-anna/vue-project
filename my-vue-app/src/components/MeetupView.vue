@@ -11,7 +11,6 @@
           <MeetupInfo :organizer="meetup.organizer" :place="meetup.place" :date="meetup.date" />
           <!-- TODO: Реализовать кнопки (некоторые должны быть ссылками) -->
           <div class="meetup__aside-buttons">
-            <!-- TODO: Может добавить тут слот? -->
             <template v-if="canEdit">
               <UiButton variant="primary" class="meetup__aside-button">Редактировать</UiButton>
               <UiButton variant="danger" class="meetup__aside-button" @click="handleDeleteMeetupButtonClick"

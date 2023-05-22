@@ -21,6 +21,7 @@ import { clearUser } from './services/authService.js';
 import { useAuthStore } from './stores/useAuthStore';
 import { storeToRefs } from 'pinia/dist/pinia';
 import { useHead } from 'unhead'
+import { useToaster } from './plugins/toaster';
 
 export default {
   name: 'App',
@@ -33,7 +34,8 @@ export default {
   setup() {
     useHead({
       title: 'Meetups'
-    })
+    });
+    const toaster = useToaster();
 
     const authStore = useAuthStore();
     const { update } = authStore;
@@ -46,11 +48,13 @@ export default {
     httpClient.onUnauthenticated(clearUser);
 
     httpClient.onNetworkError(() => {
-      // TODO: проблема с сетью, стоит вывести тост пользователю
+      toaster.error('Потеряно соединение с интернетом');
     });
 
-    // TODO: обработка глобальных ошибок - необработанные исключения можно залогировать и вывести тост
-    // TODO: глобальные ошибки можно поймать событиями "error" и "unhandledrejection"
+    window.addEventListener('unhandledrejection', (event) => {
+      console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
+      toaster.error(event.reason);
+    });
   },
 };
 </script>
