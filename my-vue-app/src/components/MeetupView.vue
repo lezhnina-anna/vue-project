@@ -13,18 +13,17 @@
           <div class="meetup__aside-buttons">
             <template v-if="canEdit">
               <UiButton variant="primary" class="meetup__aside-button">Редактировать</UiButton>
-              <UiButton variant="danger" class="meetup__aside-button" @click="handleDeleteMeetupButtonClick"
-                >Удалить</UiButton
-              >
+              <UiButton variant="danger" class="meetup__aside-button" @click="handleDeleteMeetupButtonClick">Удалить</UiButton>
             </template>
             <UiButton
               v-if="meetup.attending"
               variant="secondary"
               class="meetup__aside-button"
               @click="handleLeaveMeetupButtonClick"
-              >Отменить участие</UiButton
-            >
-            <UiButton v-else variant="primary" class="meetup__aside-button" @click="handleAttendMeetupButtonClick">
+              @disabled="isDisabled">
+              Отменить участие
+            </UiButton>
+            <UiButton v-else variant="primary" class="meetup__aside-button" @click="handleAttendMeetupButtonClick" @disabled="isDisabled">
               Участвовать
             </UiButton>
           </div>
@@ -42,9 +41,9 @@ import UiButton from './UiButton.vue';
 import { useAuthStore } from '../stores/useAuthStore';
 import { storeToRefs } from 'pinia/dist/pinia';
 import { attendMeetup, leaveMeetup, deleteMeetup } from '../api/meetupsApi';
-import { computed } from 'vue';
-import { useToaster } from '../plugins/toaster';
+import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useApi } from '../composables/useApi';
 
 export default {
   name: 'MeetupView',
@@ -68,20 +67,20 @@ export default {
   setup(props, { emit }) {
     const authStore = useAuthStore();
     const { user, isAuthenticated } = storeToRefs(authStore);
-    const toaster = useToaster();
     const router = useRouter();
+    const isDisabled = ref(false);
 
     const canEdit = computed(() => isAuthenticated && props.meetup.organizer === user.fullname);
 
     const updateParticipant = async (handler) => {
-      const response = await handler(props.meetup.id);
+      const { request, result, isLoading } = useApi(handler,{ showProgress: true, successToast: 'Сохранено', errorToast: true })
 
-      if (response.success) {
-        toaster.success('Сохранено');
+      isDisabled.value = isLoading.value;
+      await request(props.meetup.id);
+      if (result.value.success) {
         emit('update');
-      } else {
-        toaster.error(response.error.message);
       }
+      isDisabled.value = isLoading.value;
     };
 
     const handleAttendMeetupButtonClick = () => {
@@ -93,20 +92,19 @@ export default {
     };
 
     const handleDeleteMeetupButtonClick = async () => {
-      const response = await deleteMeetup(props.meetup.id);
+      const { request, result, isLoading } = useApi(deleteMeetup,{ showProgress: true, successToast: 'Митап удалён', errorToast: true })
 
-      if (response.success) {
+      isDisabled.value = isLoading.value;
+      await request(props.meetup.id);
+      if (result.value.success) {
         router.push({ name: 'meetups' });
-        toaster.success('Митап удалён');
-      } else {
-        toaster.error(response.error.message);
       }
+      isDisabled.value = isLoading.value;
     };
-
-    // TODO: Будет плюсом блокировать кнопку на время загрузки
 
     return {
       canEdit,
+      isDisabled,
       handleAttendMeetupButtonClick,
       handleLeaveMeetupButtonClick,
       handleDeleteMeetupButtonClick,

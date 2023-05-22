@@ -1,4 +1,7 @@
 import { ref } from 'vue';
+import { router } from '../router';
+import { createToaster } from '../plugins/toaster';
+import { createProgress } from '../plugins/progress';
 
 /*
   TODO: Реализовать компосабл для отправки запросов
@@ -38,8 +41,28 @@ import { ref } from 'vue';
 export function useApi(apiFunc, { showProgress = false, successToast = false, errorToast = false } = {}) {
   const result = ref(null);
   const isLoading = ref(false);
+  const toaster = createToaster();
+  const progress = createProgress({ undefined, router });
 
-  const request = async (...args) => {};
+  const request = async (...args) => {
+    if (showProgress) {
+      progress.start();
+    }
+
+    isLoading.value = true;
+    result.value = await apiFunc(...args);
+    isLoading.value = false;
+
+    if (showProgress) {
+      progress.finish();
+    }
+
+    if (result.value.success && successToast) {
+      toaster.success(successToast);
+    } else if (result.value.error && errorToast) {
+      toaster.error(errorToast !== true ? errorToast : result.value.error.message);
+    }
+  };
 
   return {
     request,
