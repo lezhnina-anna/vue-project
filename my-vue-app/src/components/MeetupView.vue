@@ -9,10 +9,9 @@
         </div>
         <div class="meetup__aside">
           <MeetupInfo :organizer="meetup.organizer" :place="meetup.place" :date="meetup.date" />
-          <!-- TODO: Реализовать кнопки (некоторые должны быть ссылками) -->
           <div class="meetup__aside-buttons">
             <template v-if="canEdit">
-              <UiButton variant="primary" class="meetup__aside-button">Редактировать</UiButton>
+              <UiButton variant="primary" class="meetup__aside-button" tag="RouterLink" :to="{ name: 'editMeetup', params: { meetupId } }">Редактировать</UiButton>
               <UiButton variant="danger" class="meetup__aside-button" @click="handleDeleteMeetupButtonClick">Удалить</UiButton>
             </template>
             <UiButton
@@ -23,7 +22,7 @@
               @disabled="isDisabled">
               Отменить участие
             </UiButton>
-            <UiButton v-else variant="primary" class="meetup__aside-button" @click="handleAttendMeetupButtonClick" @disabled="isDisabled">
+            <UiButton v-else-if="isAuthenticated" variant="primary" class="meetup__aside-button" @click="handleAttendMeetupButtonClick" @disabled="isDisabled">
               Участвовать
             </UiButton>
           </div>
@@ -42,7 +41,7 @@ import { useAuthStore } from '../stores/useAuthStore';
 import { storeToRefs } from 'pinia/dist/pinia';
 import { attendMeetup, leaveMeetup, deleteMeetup } from '../api/meetupsApi';
 import { computed, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { useApi } from '../composables/useApi';
 
 export default {
@@ -68,9 +67,10 @@ export default {
     const authStore = useAuthStore();
     const { user, isAuthenticated } = storeToRefs(authStore);
     const router = useRouter();
+    const route = useRoute();
     const isDisabled = ref(false);
 
-    const canEdit = computed(() => isAuthenticated && props.meetup.organizer === user.fullname);
+    const canEdit = computed(() => isAuthenticated && props.meetup.organizer === user.value.fullname);
 
     const updateParticipant = async (handler) => {
       const { request, result, isLoading } = useApi(handler,{ showProgress: true, successToast: 'Сохранено', errorToast: true })
@@ -102,9 +102,13 @@ export default {
       isDisabled.value = isLoading.value;
     };
 
+    const meetupId = route.params.meetupId;
+
     return {
       canEdit,
       isDisabled,
+      isAuthenticated,
+      meetupId,
       handleAttendMeetupButtonClick,
       handleLeaveMeetupButtonClick,
       handleDeleteMeetupButtonClick,

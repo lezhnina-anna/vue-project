@@ -72,10 +72,14 @@ export const routes = [
   },
   {
     path: '/meetups/:meetupId(\\d+)/edit',
+    name: 'editMeetup',
+    props: (to) => ({
+      meetupId: +to.params.meetupId,
+    }),
     meta: {
       authorizedOnly: true,
     },
-    // TODO: Добавить страницу редактирования митапа
+    component: () => import('../views/PageEditMeetup.vue'),
   },
   {
     path: '/:pathMatch(.*)*',
