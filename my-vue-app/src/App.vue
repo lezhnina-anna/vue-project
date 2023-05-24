@@ -45,7 +45,10 @@ export default {
       update();
     }
 
-    httpClient.onUnauthenticated(clearUser);
+    httpClient.onUnauthenticated(() => {
+      clearUser();
+      window.location.reload();
+    });
 
     httpClient.onNetworkError(() => {
       toaster.error('Потеряно соединение с интернетом');
