@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <select @change="handleSelect">
+  <select @change="handleSelect" style="display: none">
     <option
       v-for="option in options"
       :key="option.value"

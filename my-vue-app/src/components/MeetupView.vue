@@ -70,7 +70,7 @@ export default {
     const route = useRoute();
     const isDisabled = ref(false);
 
-    const canEdit = computed(() => isAuthenticated && props.meetup.organizer === user.value.fullname);
+    const canEdit = computed(() => isAuthenticated && props.meetup.organizer === user.value?.fullname);
 
     const updateParticipant = async (handler) => {
       const { request, result, isLoading } = useApi(handler,{ showProgress: true, successToast: 'Сохранено', errorToast: true })

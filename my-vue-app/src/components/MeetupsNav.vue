@@ -5,10 +5,10 @@
     </RouterLink>
     <template v-if="isAuthenticated">
       <!-- Ссылки авторизованного пользователя -->
-      <RouterLink :to="{ name: 'meetups', query: { participation: 'attending' } }" class="nav__link">
+      <RouterLink :to="{ name: 'meetups', query: { ...$route.query, participation: 'attending' } }" class="nav__link">
         Мои митапы
       </RouterLink>
-      <RouterLink :to="{ name: 'meetups', query: { participation: 'organizing' } }" class="nav__link">
+      <RouterLink :to="{ name: 'meetups', query: { ...$route.query, participation: 'organizing' } }" class="nav__link">
         Организуемые митапы
       </RouterLink>
       <RouterLink :to="{ name: 'createMeetup' }" class="nav__link">Создать митап</RouterLink>

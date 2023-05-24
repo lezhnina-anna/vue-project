@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref, watch, onMounted } from 'vue';
 import MeetupsList from '../components/MeetupsList.vue';
 import MeetupsCalendar from '../components/MeetupsCalendar.vue';
 import UiRadioGroup from '../components/UiRadioGroup.vue';
@@ -88,20 +88,6 @@ export default {
 
     useQuerySync(filter, view);
 
-    const route = useRoute();
-
-    onMounted(() => {
-      if (route.query.view?.length) {
-        view.value = route.query.view;
-      }
-
-      for (const property in filter.value) {
-        if (route.query[property]) {
-          filter.value[property] = route.query[property];
-        }
-      }
-    });
-
     const viewComponent = computed(() => {
       const viewToComponents = {
         list: MeetupsList,
@@ -109,6 +95,26 @@ export default {
       };
       return viewToComponents[view.value];
     });
+
+    const setFilteredMeetups = (query) => {
+      if (query.view?.length) {
+        view.value = query.view;
+      }
+
+      for (const property in filter.value) {
+        if (query[property]) {
+          filter.value[property] = query[property];
+        }
+      }
+    }
+
+    const route = useRoute();
+
+    onMounted(() => {
+      setFilteredMeetups(route.query);
+    });
+
+    watch(() => route.query, setFilteredMeetups);
 
     return {
       meetups,
