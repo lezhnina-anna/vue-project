@@ -1,16 +1,16 @@
 <template>
   <nav class="nav">
-    <RouterLink v-if="$route.meta.showReturnToMeetups" to="/meetups" class="nav__link">
+    <RouterLink v-if="$route.meta.showReturnToMeetups" class="nav__link" :to="{ name: 'meetups' }">
       &larr; Вернуться к списку
     </RouterLink>
     <template v-if="isAuthenticated">
       <!-- Ссылки авторизованного пользователя -->
       <RouterLink :to="{ name: 'meetups', query: { participation: 'attending' } }" class="nav__link">
-        Мои митапы</RouterLink
-      >
+        Мои митапы
+      </RouterLink>
       <RouterLink :to="{ name: 'meetups', query: { participation: 'organizing' } }" class="nav__link">
-        Организуемые митапы</RouterLink
-      >
+        Организуемые митапы
+      </RouterLink>
       <RouterLink :to="{ name: 'createMeetup' }" class="nav__link">Создать митап</RouterLink>
       <a href="#" class="nav__link" @click="logout">{{ user.fullname }} (выйти)</a>
     </template>

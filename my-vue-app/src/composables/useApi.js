@@ -3,13 +3,6 @@ import { router } from '../router';
 import { createToaster } from '../plugins/toaster';
 import { createProgress } from '../plugins/progress';
 
-/*
-  TODO: Реализовать компосабл для отправки запросов
-        - Подразумевается, что в нём будут использоваться функции, возвращающие промис с ResultContainer
-        - Но вы можете использовать и другой подход
-        - Task composition/useApi
- */
-
 /**
  * @template T
  * @typedef {function(...[*]): Promise<ResultContainer<T>>} IApiFunction
